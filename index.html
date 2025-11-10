@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Since 0412 — Oracle</title>
+<style>
+  :root { --safe: 16px; --cardW: 480px; }
+  * { box-sizing:border-box; }
+  html, body { height:100%; margin:0; }
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background: radial-gradient(circle at 50% 30%, #0f1012, #070709 70%);
+    color:#ECECEC; display:flex; align-items:center; justify-content:center; padding:var(--safe);
+  }
+
+  .wrap{ width:min(92vw,var(--cardW)); }
+  .card{
+    width:100%;
+    border-radius:18px;
+    background:linear-gradient(180deg,#1b1c1f 0%, #101114 100%);
+    box-shadow:0 18px 42px rgba(0,0,0,.55), inset 0 0 22px rgba(255,255,255,.04);
+    padding:24px;
+    display:flex; flex-direction:column; align-items:center;
+  }
+
+  .ring{
+    width:110px; height:110px; border-radius:50%;
+    background: radial-gradient(closest-side, #f7f7f7 0%, #cfcfd1 65%, #8c8e93 100%);
+    box-shadow: inset 0 0 18px rgba(0,0,0,.45), 0 3px 20px rgba(255,255,255,.07);
+    margin-top:6px; margin-bottom:18px;
+  }
+
+  .fortune{
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    line-height:1.25;
+    font-weight:800;
+    font-size: clamp(18px, 2.2vh + 1.2vw, 26px);
+    max-width:92%;
+  }
+
+  .divide{
+    width:65%; height:1px; opacity:.7;
+    margin:16px 0 10px 0;
+    background:linear-gradient(90deg,#777,#bbb,#777);
+  }
+
+  .code{
+    font-weight:800; letter-spacing:2px;
+    margin-top:4px;
+    font-size: clamp(20px, 2.4vh + 1vw, 28px);
+  }
+
+  .since{
+    margin-top:6px;
+    font-size:12px;
+    letter-spacing:1.2px;
+    opacity:.75;
+  }
+
+</style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="ring"></div>
+      <div id="fortune" class="fortune">LOADING...</div>
+      <div class="divide"></div>
+      <div id="code" class="code">0000</div>
+      <div class="since">SINCE 0412</div>
+    </div>
+  </div>
+
+<script>
+  // ——————————————
+  // FORTUNE LIST
+  // ——————————————
+  const fortunes = [
+    "ALIGNMENTS IN THE COSMOS WILL WORK IN YOUR FAVOR",
+    "EXPECT A SURPRISE INVITATION TO A FARAWAY LAND",
+    "AN ANCIENT CONNECTION WILL SPARK A NEW ROMANCE",
+    "A POWERFUL ALLY APPEARS WHEN YOU SHARE YOUR REAL VISION",
+    "DISCIPLINE TURNS INTO FREEDOM—TINY HABITS, BIG OUTCOMES",
+    "BEAUTY MULTIPLIES WHERE YOU REST WELL",
+    "CHOOSE THE BOLDER PATH—THE SAFER ONE DELAYS THE MIRACLE",
+    "AN UNEXPECTED WINDFALL ACCELERATES YOUR TIMELINE",
+    "TRAVEL REALIGNS YOUR LUCK THIS SEASON",
+    "MAGNETISM RISES AS YOU SIMPLIFY",
+    "SOMETHING YOU DESIRE IS ALREADY ON ITS WAY",
+    "AN OPPORTUNITY WILL REVEAL ITSELF IN DISGUISE"
+  ];
+
+  function generate() {
+    // random fortune
+    const i = Math.floor(Math.random() * fortunes.length);
+    document.getElementById('fortune').textContent = fortunes[i];
+
+    // random 4-digit code
+    document.getElementById('code').textContent =
+      String(Math.floor(Math.random()*10000)).padStart(4,'0');
+  }
+
+  // Auto-generate on load (one-time only)
+  document.addEventListener('DOMContentLoaded', generate);
+</script>
+
+</body>
+</html>
